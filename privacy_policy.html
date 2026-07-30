@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Cooking Timer Bundle</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange:   #FF6B35;
+      --amber:    #FFC107;
+      --teal:     #00BFA5;
+      --indigo:   #5C6BC0;
+      --pink:     #EC407A;
+      --green:    #43A047;
+      --dark:     #0D0D0D;
+      --card-bg:  #FFFFFF;
+      --page-bg:  #F4F6FA;
+      --text:     #1A1A2E;
+      --muted:    #5A6070;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--page-bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #0D0D0D 0%, #1a1a2e 50%, #16213e 100%);
+      color: #fff;
+      padding: 64px 24px 72px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(255,107,53,.25) 0%, transparent 55%),
+        radial-gradient(circle at 80% 30%, rgba(255,193,7,.15) 0%, transparent 50%),
+        radial-gradient(circle at 60% 80%, rgba(0,191,165,.12) 0%, transparent 50%);
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+    .app-icon {
+      width: 96px; height: 96px;
+      background: linear-gradient(135deg, var(--orange), var(--amber));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 44px;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 32px rgba(255,107,53,.45);
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+    }
+    .hero h1 span { color: var(--amber); }
+
+    .hero-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,.70);
+      margin-bottom: 28px;
+    }
+
+    .badge-row {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: center;
+    }
+    .badge {
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: #fff;
+      backdrop-filter: blur(4px);
+    }
+    .badge.green  { background: rgba(67,160,71,.25);  border-color: rgba(67,160,71,.4); }
+    .badge.orange { background: rgba(255,107,53,.25); border-color: rgba(255,107,53,.4); }
+    .badge.teal   { background: rgba(0,191,165,.25);  border-color: rgba(0,191,165,.4); }
+
+    /* ── LAYOUT ───────────────────────────────────────── */
+    .container {
+      max-width: 780px;
+      margin: -32px auto 0;
+      padding: 0 20px 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── SUMMARY STRIP ───────────────────────────────── */
+    .summary-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .summary-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px 18px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+      border-top: 4px solid;
+    }
+    .summary-card:nth-child(1) { border-color: var(--green); }
+    .summary-card:nth-child(2) { border-color: var(--teal); }
+    .summary-card:nth-child(3) { border-color: var(--orange); }
+    .summary-card:nth-child(4) { border-color: var(--indigo); }
+
+    .summary-card .icon { font-size: 28px; margin-bottom: 8px; }
+    .summary-card .label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .summary-card .value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* ── SECTION CARDS ────────────────────────────────── */
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 32px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .section-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .icon-orange { background: rgba(255,107,53,.12); }
+    .icon-teal   { background: rgba(0,191,165,.12);  }
+    .icon-indigo { background: rgba(92,107,192,.12); }
+    .icon-pink   { background: rgba(236,64,122,.12); }
+    .icon-green  { background: rgba(67,160,71,.12);  }
+    .icon-amber  { background: rgba(255,193,7,.15);  }
+
+    .section-header h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    p { color: var(--muted); margin-bottom: 14px; font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ── PERMISSION TABLE ─────────────────────────────── */
+    .perm-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+    .perm-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      color: var(--muted);
+      padding: 8px 12px;
+      border-bottom: 2px solid #F0F2F8;
+    }
+    .perm-table td {
+      padding: 12px 12px;
+      font-size: 14px;
+      border-bottom: 1px solid #F4F6FA;
+      vertical-align: top;
+    }
+    .perm-table tr:last-child td { border-bottom: none; }
+    .perm-name {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      background: #F4F6FA;
+      padding: 3px 8px;
+      border-radius: 6px;
+      color: var(--indigo);
+      white-space: nowrap;
+    }
+    .perm-purpose { color: var(--muted); }
+
+    /* ── DATA TABLE ───────────────────────────────────── */
+    .data-table { width: 100%; border-collapse: collapse; margin-top: 4px; }
+    .data-table th {
+      text-align: left;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      color: var(--muted);
+      padding: 8px 12px;
+      border-bottom: 2px solid #F0F2F8;
+    }
+    .data-table td {
+      padding: 12px 12px;
+      font-size: 14px;
+      border-bottom: 1px solid #F4F6FA;
+      color: var(--muted);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .tag-local  { background: rgba(67,160,71,.12);  color: var(--green); }
+    .tag-never  { background: rgba(236,64,122,.12); color: var(--pink);  }
+
+    /* ── CALLOUT BOX ──────────────────────────────────── */
+    .callout {
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .callout-green  { background: rgba(67,160,71,.08);  border-left: 4px solid var(--green); }
+    .callout-orange { background: rgba(255,107,53,.08); border-left: 4px solid var(--orange); }
+    .callout-teal   { background: rgba(0,191,165,.08);  border-left: 4px solid var(--teal); }
+    .callout-icon   { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+    .callout-text   { font-size: 14px; color: var(--text); }
+    .callout-text strong { display: block; font-weight: 700; margin-bottom: 4px; color: var(--text); }
+
+    /* ── NO DATA BANNER ───────────────────────────────── */
+    .no-data-banner {
+      background: linear-gradient(135deg, rgba(67,160,71,.10), rgba(0,191,165,.10));
+      border: 2px dashed rgba(67,160,71,.35);
+      border-radius: 16px;
+      padding: 28px;
+      text-align: center;
+    }
+    .no-data-banner .big-icon { font-size: 48px; margin-bottom: 10px; }
+    .no-data-banner h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--green); }
+    .no-data-banner p { font-size: 14px; color: var(--muted); margin: 0; }
+
+    /* ── CONTACT CARD ─────────────────────────────────── */
+    .contact-card {
+      background: linear-gradient(135deg, var(--dark), #1a1a2e);
+      border-radius: 20px;
+      padding: 32px 28px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .contact-card h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .contact-card p { color: rgba(255,255,255,.65); font-size: 14px; margin-bottom: 20px; }
+    .contact-email {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--orange), var(--amber));
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 15px;
+      box-shadow: 0 4px 16px rgba(255,107,53,.4);
+    }
+
+    /* ── FOOTER ───────────────────────────────────────── */
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 12px 0 0;
+    }
+    .footer a { color: var(--orange); text-decoration: none; }
+
+    /* ── TOC ──────────────────────────────────────────── */
+    .toc {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.06);
+    }
+    .toc h3 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .toc ol {
+      padding-left: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 6px 24px;
+    }
+    .toc li { font-size: 14px; }
+    .toc a { color: var(--orange); text-decoration: none; font-weight: 500; }
+    .toc a:hover { text-decoration: underline; }
+
+    @media (max-width: 540px) {
+      .card, .contact-card { padding: 24px 18px; }
+      .hero { padding: 48px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="app-icon">🍳</div>
+    <h1>Cooking Timer Bundle<br><span>Privacy Policy</span></h1>
+    <p class="hero-sub">Galaxy Watch 4 · 5 · 6 · 7 · 8 &nbsp;|&nbsp; Wear OS</p>
+    <div class="badge-row">
+      <span class="badge green">✓ No Data Collected</span>
+      <span class="badge teal">✓ No Internet Access</span>
+      <span class="badge orange">✓ Works 100% Offline</span>
+      <span class="badge">Age Rating: 0+</span>
+      <span class="badge">Last updated: July 29, 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════════════════════════ -->
+<main class="container">
+
+  <!-- At-a-glance summary -->
+  <div class="summary-strip">
+    <div class="summary-card">
+      <div class="icon">🚫</div>
+      <div class="label">Data Collected</div>
+      <div class="value">None</div>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🌐</div>
+      <div class="label">Internet Access</div>
+      <div class="value">None</div>
+    </div>
+    <div class="summary-card">
+      <div class="icon">🤝</div>
+      <div class="label">Third Parties</div>
+      <div class="value">None</div>
+    </div>
+    <div class="summary-card">
+      <div class="icon">👶</div>
+      <div class="label">Age Rating</div>
+      <div class="value">0+ (All Ages)</div>
+    </div>
+  </div>
+
+  <!-- Table of Contents -->
+  <nav class="toc" id="top">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#no-data">Data We Do Not Collect</a></li>
+      <li><a href="#local-storage">Data Stored Locally</a></li>
+      <li><a href="#permissions">App Permissions</a></li>
+      <li><a href="#third-parties">Third-Party Services</a></li>
+      <li><a href="#children">Children's Privacy</a></li>
+      <li><a href="#your-rights">Your Rights</a></li>
+      <li><a href="#changes">Changes to This Policy</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1. Overview -->
+  <section class="card" id="overview">
+    <div class="section-header">
+      <div class="section-icon icon-orange">📋</div>
+      <h2>1. Overview</h2>
+    </div>
+    <p>
+      Cooking Timer Bundle ("the app", "we", "our") is a standalone Wear OS application
+      designed for Samsung Galaxy Watch. This Privacy Policy explains what data the app
+      handles, how it is stored, and what it is used for.
+    </p>
+    <p>
+      The short version: <strong>we do not collect, transmit, or share any personal
+      information.</strong> Everything the app records stays on your Galaxy Watch and
+      is never sent anywhere.
+    </p>
+  </section>
+
+  <!-- 2. Data We Do NOT Collect -->
+  <section class="card" id="no-data">
+    <div class="section-header">
+      <div class="section-icon icon-green">🛡️</div>
+      <h2>2. Data We Do Not Collect</h2>
+    </div>
+
+    <div class="no-data-banner">
+      <div class="big-icon">🔒</div>
+      <h3>Zero Data Leaves Your Watch</h3>
+      <p>The app has no internet permission. It is physically incapable of sending<br>
+         any information to any server — including ours.</p>
+    </div>
+
+    <br>
+    <p>We do <strong>not</strong> collect, store remotely, or transmit any of the following:</p>
+    <div class="callout callout-green">
+      <div class="callout-icon">✅</div>
+      <div class="callout-text">No name, email address, phone number, or any personal identifier.</div>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-icon">✅</div>
+      <div class="callout-text">No location data, GPS coordinates, or device location history.</div>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-icon">✅</div>
+      <div class="callout-text">No health or biometric data (heart rate, steps, sleep, etc.).</div>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-icon">✅</div>
+      <div class="callout-text">No usage analytics, crash reports, or diagnostic telemetry.</div>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-icon">✅</div>
+      <div class="callout-text">No advertising identifiers, cookies, or tracking pixels.</div>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-icon">✅</div>
+      <div class="callout-text">No microphone, camera, or contacts access.</div>
+    </div>
+  </section>
+
+  <!-- 3. Data Stored Locally -->
+  <section class="card" id="local-storage">
+    <div class="section-header">
+      <div class="section-icon icon-teal">💾</div>
+      <h2>3. Data Stored Locally on Your Watch</h2>
+    </div>
+    <p>
+      The app stores the following information in a private local database on your
+      Galaxy Watch. This data <strong>never leaves the device</strong>.
+    </p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Purpose</th>
+          <th>Storage</th>
+          <th>Shared?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Custom timer names &amp; durations</td>
+          <td>Lets you reuse your own timers</td>
+          <td><span class="tag tag-local">On-device only</span></td>
+          <td><span class="tag tag-never">Never</span></td>
+        </tr>
+        <tr>
+          <td>Favourite presets</td>
+          <td>Quick access to your starred timers</td>
+          <td><span class="tag tag-local">On-device only</span></td>
+          <td><span class="tag tag-never">Never</span></td>
+        </tr>
+        <tr>
+          <td>Meal templates</td>
+          <td>Start grouped timers with one tap</td>
+          <td><span class="tag tag-local">On-device only</span></td>
+          <td><span class="tag tag-never">Never</span></td>
+        </tr>
+        <tr>
+          <td>Timer history (last 200 sessions)</td>
+          <td>History log and cooking statistics</td>
+          <td><span class="tag tag-local">On-device only</span></td>
+          <td><span class="tag tag-never">Never</span></td>
+        </tr>
+        <tr>
+          <td>App settings &amp; preferences</td>
+          <td>Theme, font size, vibration, etc.</td>
+          <td><span class="tag tag-local">On-device only</span></td>
+          <td><span class="tag tag-never">Never</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <div class="callout callout-teal">
+      <div class="callout-icon">🗑️</div>
+      <div class="callout-text">
+        <strong>Deleting your data</strong>
+        Uninstalling the app permanently deletes all locally stored data from your watch.
+        There is no cloud backup and no server copy to erase.
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Permissions -->
+  <section class="card" id="permissions">
+    <div class="section-header">
+      <div class="section-icon icon-indigo">🔑</div>
+      <h2>4. App Permissions</h2>
+    </div>
+    <p>
+      The app requests the following Android permissions. Each one is used exclusively
+      for the stated purpose — nothing more.
+    </p>
+
+    <table class="perm-table">
+      <thead>
+        <tr>
+          <th>Permission</th>
+          <th>Why it is needed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="perm-name">VIBRATE</span></td>
+          <td class="perm-purpose">Haptic feedback when a timer finishes</td>
+        </tr>
+        <tr>
+          <td><span class="perm-name">FOREGROUND_SERVICE</span></td>
+          <td class="perm-purpose">Keeps the timer running when the watch screen turns off</td>
+        </tr>
+        <tr>
+          <td><span class="perm-name">FOREGROUND_SERVICE_SPECIAL_USE</span></td>
+          <td class="perm-purpose">Required by Android for the cooking timer service type</td>
+        </tr>
+        <tr>
+          <td><span class="perm-name">POST_NOTIFICATIONS</span></td>
+          <td class="perm-purpose">Shows the timer-complete alert on the watch</td>
+        </tr>
+        <tr>
+          <td><span class="perm-name">WAKE_LOCK</span></td>
+          <td class="perm-purpose">Prevents the processor from sleeping mid-countdown</td>
+        </tr>
+        <tr>
+          <td><span class="perm-name">RECEIVE_BOOT_COMPLETED</span></td>
+          <td class="perm-purpose">Restores active timers if the watch is restarted</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+    <div class="callout callout-orange">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-text">
+        <strong>No INTERNET permission</strong>
+        The app does not request the INTERNET permission. Android enforces this at
+        the OS level — without it, the app cannot make any network connection regardless
+        of its own code.
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Third-Party Services -->
+  <section class="card" id="third-parties">
+    <div class="section-header">
+      <div class="section-icon icon-pink">🤝</div>
+      <h2>5. Third-Party Services</h2>
+    </div>
+    <p>
+      Cooking Timer Bundle does <strong>not</strong> integrate any third-party service that
+      could access or collect your data. Specifically, none of the following are present
+      in the app:
+    </p>
+    <div class="callout callout-green">
+      <div class="callout-icon">🚫</div>
+      <div class="callout-text">No advertising SDKs (Google Ads, Meta Audience Network, etc.)</div>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-icon">🚫</div>
+      <div class="callout-text">No analytics platforms (Firebase Analytics, Mixpanel, Amplitude, etc.)</div>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-icon">🚫</div>
+      <div class="callout-text">No crash reporting services (Crashlytics, Sentry, etc.)</div>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-icon">🚫</div>
+      <div class="callout-text">No social login or OAuth providers</div>
+    </div>
+    <div class="callout callout-green">
+      <div class="callout-icon">🚫</div>
+      <div class="callout-text">No payment processors or in-app purchase systems</div>
+    </div>
+  </section>
+
+  <!-- 6. Children's Privacy -->
+  <section class="card" id="children">
+    <div class="section-header">
+      <div class="section-icon icon-amber">👨‍👩‍👧‍👦</div>
+      <h2>6. Children's Privacy</h2>
+    </div>
+    <p>
+      Cooking Timer Bundle is rated <strong>0+ (All Ages)</strong> and is safe for users
+      of all ages, including children under 13.
+    </p>
+    <p>
+      Because the app collects no personal data of any kind, there are no special
+      parental consent requirements. No account creation is required to use any feature
+      of the app.
+    </p>
+    <p>
+      We comply fully with the Children's Online Privacy Protection Act (COPPA) and
+      equivalent international regulations.
+    </p>
+  </section>
+
+  <!-- 7. Your Rights -->
+  <section class="card" id="your-rights">
+    <div class="section-header">
+      <div class="section-icon icon-teal">⚖️</div>
+      <h2>7. Your Rights</h2>
+    </div>
+    <p>
+      Because no personal data is collected or processed by us, standard data rights
+      (access, rectification, erasure, portability) apply only to the local data
+      stored on your own device.
+    </p>
+    <div class="callout callout-teal">
+      <div class="callout-icon">📱</div>
+      <div class="callout-text">
+        <strong>Right to deletion</strong>
+        You can delete all app data at any time by uninstalling the app from your
+        Galaxy Watch. This immediately and permanently removes the local database.
+      </div>
+    </div>
+    <div class="callout callout-teal">
+      <div class="callout-icon">🔍</div>
+      <div class="callout-text">
+        <strong>Right to access</strong>
+        All data the app stores is visible directly within the app — in History,
+        Favourites, Custom Timers, Meal Templates, and Settings.
+      </div>
+    </div>
+    <p>
+      Since we hold no data about you on any server, there is nothing for us to
+      provide, correct, or erase on our end.
+    </p>
+  </section>
+
+  <!-- 8. Changes -->
+  <section class="card" id="changes">
+    <div class="section-header">
+      <div class="section-icon icon-orange">📅</div>
+      <h2>8. Changes to This Policy</h2>
+    </div>
+    <p>
+      If we ever update this Privacy Policy, the new version will be published at
+      the same URL with a revised "Last updated" date at the top of the page.
+    </p>
+    <p>
+      We will not introduce data collection, advertising, or third-party tracking
+      without clearly notifying users and updating this policy first.
+    </p>
+    <p>
+      Continued use of the app after a policy update constitutes acceptance of the
+      revised terms. We encourage you to review this page periodically.
+    </p>
+  </section>
+
+  <!-- Contact -->
+  <div class="contact-card" id="contact">
+    <h2>📬 Questions or Concerns?</h2>
+    <p>
+      If you have any questions about this Privacy Policy or how Cooking Timer Bundle
+      handles data, please reach out — we're happy to help.
+    </p>
+    <a class="contact-email" href="mailto:ctmsoftware@gmx.us">
+      ctmsoftware@gmx.us
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 Cooking Timer Bundle &nbsp;·&nbsp; All Rights Reserved</p>
+    <p style="margin-top:6px;">
+      Compatible with Galaxy Watch 4, 5, 6, 7, 8 &nbsp;·&nbsp;
+      Wear OS 3.0 and above &nbsp;·&nbsp;
+      <a href="#top">Back to top ↑</a>
+    </p>
+  </footer>
+
+</main>
+</body>
+</html>
